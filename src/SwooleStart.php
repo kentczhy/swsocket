@@ -1,5 +1,5 @@
 <?php
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
 use Illuminate\Console\Command;
 use Swoole\Coroutine;
@@ -153,7 +153,7 @@ class SwooleStart extends Command
             $classSwooleFunc = config('swsocket.swoole_func_class');
             $oSwooleFunc = new $classSwooleFunc();
         } else {
-            $oSwooleFunc = new \Kent\Swsocket\SwooleFunc();
+            $oSwooleFunc = new \Kentczhy\Swsocket\SwooleFunc();
         }
         $wServer->on('open', [$oSwooleFunc, 'open']);
         $wServer->on('message', [$oSwooleFunc, 'message']);

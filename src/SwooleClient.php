@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
-use Kent\Swsocket\Enum\LoginEnum;
+use Kentczhy\Swsocket\Enum\LoginEnum;
 use Illuminate\Support\Str;
 
 /**
  * swoole 调用业务里面的方法
  *
  * Class SwooleClient
- * @package Kent\Swsocket
+ * @package Kentczhy\Swsocket
  */
 class SwooleClient
 {

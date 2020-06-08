@@ -1,6 +1,6 @@
 <?php
 
-namespace Kent\Swsocket\Traits;
+namespace Kentczhy\Swsocket\Traits;
 
 trait ContainerTrait
 {

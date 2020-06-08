@@ -1,9 +1,9 @@
 <?php
 
-namespace Kent\Swsocket\Providers;
+namespace Kentczhy\Swsocket\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Kent\Swsocket\SwooleStart;
+use Kentczhy\Swsocket\SwooleStart;
 
 class SwsocketServiceProvider extends ServiceProvider
 {

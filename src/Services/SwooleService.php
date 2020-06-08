@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket\Services;
+namespace Kentczhy\Swsocket\Services;
 
-use Kent\Swsocket\Enum\SwsocketEnum;
+use Kentczhy\Swsocket\Enum\SwsocketEnum;
 
 /**
  * swoole 服务层一般写一些redis的操作
  *
  * Class SwooleService
- * @package Kent\Swsocket\Services
+ * @package Kentczhy\Swsocket\Services
  */
 class SwooleService
 {

@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket\Business;
+namespace Kentczhy\Swsocket\Business;
 
-use Kent\Swsocket\Services\SwooleService;
-use Kent\Swsocket\SwooleResponse;
+use Kentczhy\Swsocket\Services\SwooleService;
+use Kentczhy\Swsocket\SwooleResponse;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;

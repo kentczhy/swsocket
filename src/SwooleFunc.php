@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
-use Kent\Swsocket\Services\SwooleService;
+use Kentczhy\Swsocket\Services\SwooleService;
 
 /**
  * swoole 绑定的方法
  *
  * Class SwooleFunc
- * @package Kent\Swsocket
+ * @package Kentczhy\Swsocket
  */
 class SwooleFunc
 {

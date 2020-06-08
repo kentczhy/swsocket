@@ -4,15 +4,15 @@
  * User: kent
  */
 
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
-use Kent\Swsocket\Traits\ContainerTrait;
+use Kentczhy\Swsocket\Traits\ContainerTrait;
 
 /**
  * swoole 数据格式返回
  *
  * Class SwooleResponse
- * @package Kent\Swsocket
+ * @package Kentczhy\Swsocket
  */
 class SwooleResponse
 {

@@ -4,7 +4,7 @@
  * User: kent
  */
 
-namespace Kent\Swsocket\Business;
+namespace Kentczhy\Swsocket\Business;
 
 class Test extends BusinessBase
 {

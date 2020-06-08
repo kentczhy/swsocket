@@ -6,7 +6,7 @@
  * Time: 10:46
  */
 
-namespace Kent\Swsocket\Enum;
+namespace Kentczhy\Swsocket\Enum;
 
 interface LoginEnum
 {

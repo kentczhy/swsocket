@@ -5,9 +5,9 @@
  * Date: 31/03/2018
  * Time: 10:50
  */
-namespace Kent\Swsocket\Business;
+namespace Kentczhy\Swsocket\Business;
 
-use Kent\Swsocket\Services\SwooleService;
+use Kentczhy\Swsocket\Services\SwooleService;
 use Main\Service\LoginTokenService;
 
 class Login extends BusinessBase

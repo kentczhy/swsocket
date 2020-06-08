@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket\Business;
+namespace Kentczhy\Swsocket\Business;
 
 class User extends BusinessBase
 {

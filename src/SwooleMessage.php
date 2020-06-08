@@ -4,16 +4,16 @@
  * User: kent
  */
 
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
-use Kent\Swsocket\Traits\ContainerTrait;
-use Kent\Swsocket\Services\SwooleService;
+use Kentczhy\Swsocket\Traits\ContainerTrait;
+use Kentczhy\Swsocket\Services\SwooleService;
 
 /**
  * 消息推送
  *
  * Class SwooleMessage
- * @package Kent\Swsocket
+ * @package Kentczhy\Swsocket
  */
 class SwooleMessage
 {

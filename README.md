@@ -7,7 +7,7 @@ This library provides a way of easy to set up websocket.
 The suggested installation method is via [composer](https://getcomposer.org/):
 
 ```sh
-composer require "kent/swsocket:~dev"
+composer require "kentczhy/swsocket:dev-master"
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ itself:
 
 config/app.php
 
-\Kent\Swsocket\Providers\SwsocketServiceProvider::class
+\Kentczhy\Swsocket\Providers\SwsocketServiceProvider::class
 
 
 ```shell script

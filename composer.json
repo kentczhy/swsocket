@@ -1,5 +1,5 @@
 {
-    "name":              "kent/swsocket",
+    "name":              "kentczhy/swsocket",
     "description":       "建立 websocket 简易插件",
     "type":              "library",
     "license":           "MIT",
@@ -32,7 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Kent\\Swsocket\\Tests": "src/tests/"
+            "Kentczhy\\Swsocket\\Tests": "src/tests/"
         }
     },
     "extra": {

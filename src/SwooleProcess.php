@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: kent
  */
-namespace Kent\Swsocket;
+namespace Kentczhy\Swsocket;
 
 use Illuminate\Support\Facades\Log;
-use Kent\Swsocket\Services\SwooleService;
+use Kentczhy\Swsocket\Services\SwooleService;
 
 /**
  * swoole 常驻进程
  *
  * Class SwooleProcess
- * @package Kent\Swsocket
+ * @package Kentczhy\Swsocket
  */
 class SwooleProcess
 {
