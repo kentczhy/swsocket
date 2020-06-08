@@ -12,8 +12,7 @@ composer require "kentczhy/swsocket"
 
 ## Usage
 
-The instantiator is able to create new instances of any class without using the constructor or any API of the class
-itself:
+PHP extension Swoole > 4.2.0 needs to be installed
 
 config/app.php
 

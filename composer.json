@@ -1,6 +1,6 @@
 {
     "name":              "kentczhy/swsocket",
-    "description":       "建立 websocket 简易插件",
+    "description":       "easy to set up websocket by swoole",
     "type":              "library",
     "license":           "MIT",
     "homepage":          "",
@@ -29,13 +29,5 @@
             "Kentczhy\\Swsocket\\": "src/"
         },
         "files": ["./src/func.php"]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Kentczhy\\Swsocket\\Tests": "src/tests/"
-        }
-    },
-    "extra": {
-
     }
 }

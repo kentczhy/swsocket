@@ -16,7 +16,7 @@ class SwsocketServiceProvider extends ServiceProvider
     {
         // 发布配置文件
         $this->publishes([
-            __DIR__.'/../Config/swsocket.php' => config_path('swsocket.php'),
+            __DIR__ . '/../../config/swsocket.php' => config_path('swsocket.php'),
         ]);
 
         // 发布测试html文件
