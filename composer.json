@@ -1,0 +1,41 @@
+{
+    "name":              "kent/swsocket",
+    "description":       "建立 websocket 简易插件",
+    "type":              "library",
+    "license":           "MIT",
+    "homepage":          "",
+    "keywords":          [
+        "websocket",
+        "swoole",
+        "swsocket"
+    ],
+    "authors": [
+        {
+            "name":     "kent",
+            "email":    "766713622@qq.com",
+            "homepage": ""
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "ext-phar": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kent\\Swsocket\\": "src/"
+        },
+        "files": ["./src/func.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kent\\Swsocket\\Tests": "src/tests/"
+        }
+    },
+    "extra": {
+
+    }
+}

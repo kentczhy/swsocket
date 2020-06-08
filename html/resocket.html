@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="./jquery.cookie.js"></script>
+    <style type="text/css">
+        .top {background-color: #ffffaa;margin: 20px}
+        .middle {background-color: #fff5d4;margin: 20px}
+        .bottom {background-color: #fffdf3;margin: 20px}
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <div id="msg">发送普通消息例子</div>
+    <p>cmd：<input type="text" id="cmd" value="test.test" /></p>
+    <p>data: <textarea rows="15" cols="100" id="data">{"key": "connection"}</textarea></p>
+    <input type="submit" value="发送数据" onclick="song()">
+</div>
+
+<div class="middle">
+    <div id="acceptmsg"></div>
+</div>
+
+</body>
+<script>
+    var msg = document.getElementById("msg");
+    var acceptmsg = document.getElementById("acceptmsg");
+
+    var resocket = {
+        ws: '',
+        lockReconnect: false,//避免重复连接
+        wsUrl: '',
+        isLogin: false,
+        func: function(obj){},
+        createWebSocket: function (url) {
+            resocket.wsUrl = url;
+            try {
+                resocket.ws = new WebSocket(url);
+                resocket.initEventHandle();
+            } catch (e) {
+                resocket.reconnect(url);
+            }
+        },
+        initEventHandle: function () {
+            resocket.ws.onclose = function () {
+                resocket.reconnect(resocket.wsUrl);
+            };
+            resocket.ws.onerror = function () {
+                resocket.reconnect(resocket.wsUrl);
+            };
+            resocket.ws.onopen = function () {
+                //试着登录 （默认关闭登陆）
+                // resocket.tryLogin.reset().startImmediately(); //立刻登录
+                //心跳检测重置
+                resocket.heartCheck.reset().start();
+            };
+            resocket.ws.onmessage = function (evt) {
+                //如果获取到消息，心跳检测重置
+                //拿到任何消息都说明当前连接是正常的
+                resocket.heartCheck.reset().start();
+                // 非心跳包
+                if (evt.data != 'a') {
+                    var obj = JSON.parse(evt.data); //由JSON字符串转换为JSON对象
+                    if (obj.hasOwnProperty('code')) {
+                        //返回 401 代表需要重新登录
+                        if (obj.code == 401) {
+                            //一直试着重新登录
+                            resocket.tryLogin.reset().start();
+                        }
+                        if (obj.code != 8) {
+                            // 登录成功
+                            if (obj.cmd == 'login.token') {
+                                resocket.isLogin = true;
+                            } else {
+                                resocket.isLogin = false;
+                            }
+                        }
+                    }
+                    //业务逻辑 回调函数 自己在外再判断属性
+                    resocket.func(obj);
+                }
+            }
+        },
+        reconnect: function (url) {
+            if(resocket.lockReconnect) return;
+            resocket.lockReconnect = true;
+            //没连接上会一直重连，设置延迟避免请求过多
+            setTimeout(function () {
+                resocket.createWebSocket(url);
+                resocket.lockReconnect = false;
+            }, 2000);
+        },
+        login: function(){
+            var token = $.cookie('token');
+            var sendData = {cmd: 'login.token', token: token, data: {}};
+            resocket.ws.send(JSON.stringify(sendData));
+        },
+        //心跳检测
+        heartCheck: {
+            timeout: 10000,//5秒
+            timeoutObj: null,
+            serverTimeoutObj: null,
+            reset: function(){
+                clearTimeout(this.timeoutObj);
+                clearTimeout(this.serverTimeoutObj);
+                return this;
+            },
+            start: function(){
+                var self = this;
+                this.timeoutObj = setTimeout(function(){
+                    //这里发送一个心跳，后端收到后，返回一个心跳消息，
+                    //onmessage拿到返回的心跳就说明连接正常
+                    resocket.ws.send("q");
+                    self.serverTimeoutObj = setTimeout(function(){//如果超过一定时间还没重置，说明后端主动断开了
+                        resocket.ws.close();//如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+                    }, self.timeout)
+                }, this.timeout)
+            }
+        },
+        //登录检测
+        tryLogin: {
+            timeout: 5000,//5秒
+            timeoutObj: null,
+            reset: function(){
+                clearTimeout(this.timeoutObj);
+                return this;
+            },
+            start: function(){
+                this.timeoutObj = setTimeout(function(){
+                    //这里发送登录消息，服务器处理之后就会返回信息
+                    resocket.login();
+                }, this.timeout)
+            },
+            startImmediately: function(){
+                resocket.login();
+            }
+        }
+    };
+    resocket.createWebSocket('ws://www.56.local:9700');
+
+    function song(){
+        var cmd = $('#cmd').val();
+        var data = $('#data').val();
+        data = JSON.parse(data);
+        var sendData = {cmd: cmd, data: data};
+        resocket.ws.send(JSON.stringify(sendData));
+    }
+
+</script>
+</html>
